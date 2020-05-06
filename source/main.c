@@ -94,6 +94,7 @@ void Tick() {
         default:
             break;
     } // State Actions
+    LCD_Cursor(1);
     LCD_WriteData(count+'0');
     PORTB = count;
 }
@@ -106,7 +107,7 @@ int main(void) {
     DDRD = 0xFF; PORTD = 0x00;
     /* Insert your solution below */
     LCD_init();
-    TimerSet(10);
+    TimerSet(100);
     TimerOn();
     state = Start;
     while (1) {
