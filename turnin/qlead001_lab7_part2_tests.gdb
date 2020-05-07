@@ -28,27 +28,27 @@ echo Running all tests..."\n\n
 
 test "Wait => PORTB: 1"
 setPINA 0xFF
-timeContinue 1
+timeContinue 3
 expectPORTB 1
 checkResult
 
 test "Wait => PORTB: 2"
-timeContinue 1
+timeContinue 3
 expectPORTB 2
 checkResult
 
 test "Wait => PORTB: 4"
-timeContinue 1
+timeContinue 3
 expectPORTB 4
 checkResult
 
 test "Wait => PORTB: 2"
-timeContinue 1
+timeContinue 3
 expectPORTB 2
 checkResult
 
 test "Wait => PORTB: 1"
-timeContinue 1
+timeContinue 3
 expectPORTB 1
 expect score 5
 checkResult
@@ -77,7 +77,7 @@ expectPORTB 1
 checkResult
 
 test "Wait => PORTB: 2"
-timeContinue 1
+timeContinue 3
 expectPORTB 2
 checkResult
 

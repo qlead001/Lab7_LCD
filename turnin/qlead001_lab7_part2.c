@@ -64,20 +64,21 @@ enum States {
     End3,
 } state;
 
-unsigned char count = 0, score;
+unsigned char count = 0;
+signed char score;
 
 void Tick() {
     switch (state) {
         case Start:
             state = One;
+            LCD_ClearScreen();
             score = 5;
             break;
         case One:
             if ((~PINA)&0x01) {
                 state = Stop;
                 score--;
-            }
-            //else if (count < 3) count++;
+            } else if (count < 2) count++;
             else {
                 state = Two;
                 count = 0;
@@ -87,8 +88,7 @@ void Tick() {
             if ((~PINA)&0x01) {
                 state = Stop;
                 score++;
-            }
-            //else if (count < 3) count++;
+            } else if (count < 2) count++;
             else {
                 state = Three;
                 count = 0;
@@ -98,8 +98,7 @@ void Tick() {
             if ((~PINA)&0x01) {
                 state = Stop;
                 score--;
-            }
-            //else if (count < 3) count++;
+            } else if (count < 2) count++;
             else {
                 state = Two_2;
                 count = 0;
@@ -109,8 +108,7 @@ void Tick() {
             if ((~PINA)&0x01) {
                 state = Stop;
                 score++;
-            }
-            //else if (count < 3) count++;
+            } else if (count < 2) count++;
             else {
                 state = One;
                 count = 0;
@@ -179,7 +177,7 @@ int main(void) {
     DDRD = 0xFF; PORTD = 0x00;
     /* Insert your solution below */
     LCD_init();
-    TimerSet(300);
+    TimerSet(100);
     TimerOn();
     state = Start;
     while (1) {
